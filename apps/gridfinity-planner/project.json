@@ -1,0 +1,78 @@
+{
+  "name": "gridfinity-planner",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/gridfinity-planner/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/gridfinity-planner"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "gridfinity-planner:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "gridfinity-planner:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "gridfinity-planner:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "gridfinity-planner:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "gridfinity-planner:build:development"
+        },
+        "production": {
+          "buildTarget": "gridfinity-planner:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/gridfinity-planner"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/gridfinity-planner/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "gridfinity-planner:build"
+      }
+    }
+  },
+  "tags": []
+}
