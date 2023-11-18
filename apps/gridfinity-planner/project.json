@@ -9,7 +9,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/gridfinity-planner"
+        "outputPath": "dist/apps/gridfinity-planner",
+        "postcssConfig": "apps/gridfinity-planner/postcss.config.js"
       },
       "configurations": {
         "development": {
@@ -71,6 +72,12 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "gridfinity-planner:build"
+      }
+    },
+    "build-models-metadata": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node apps/gridfinity-planner/src/scripts/generateModelsMetadata.ts"
       }
     }
   },
