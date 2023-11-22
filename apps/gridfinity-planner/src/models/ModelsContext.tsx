@@ -1,7 +1,7 @@
 import React from 'react';
 
 import modelsMetadata from '../../public/modelsMetadata.json';
-import { ModelsMetadata } from '../scripts/generateModelsMetadata';
+import { ModelsMetadata } from 'libs/models/src/lib/generateModelsMetadata';
 
 export type ModelsContextValue = {
   metadata: ModelsMetadata;
